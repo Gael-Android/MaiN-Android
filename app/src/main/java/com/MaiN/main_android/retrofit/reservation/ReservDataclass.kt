@@ -1,4 +1,4 @@
-package com.MaiN.main_android.retrofit
+package com.MaiN.main_android.retrofit.reservation
 
 import com.MaiN.main_android.View.Reserv.state.CellUiState
 import com.google.gson.annotations.SerializedName

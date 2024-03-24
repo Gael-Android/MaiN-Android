@@ -126,7 +126,7 @@ class FunsysAdapter(
                 if (response.isSuccessful) {
                     Log.d("ApiService", "즐겨찾기 추가 성공")
                 } else {
-                    Log.d("ApiService", "즐겨찾기 추가 실패: ${response.errorBody()}")
+                    Log.d("ApiService", "즐겨찾기 추가 실패: ${response.errorBody()?.string()}")
                 }
             } catch (e: Exception) {
                 Log.e("ApiService", "즐겨찾기 추가 실패: $e")
@@ -144,7 +144,7 @@ class FunsysAdapter(
                 if (response.isSuccessful) {
                     Log.d("ApiService", "즐겨찾기 삭제 성공")
                 } else {
-                    Log.d("ApiService", "즐겨찾기 삭제 실패 ${response.errorBody()}")
+                    Log.d("ApiService", "즐겨찾기 삭제 실패 ${response.errorBody()?.string()}")
                 }
             } catch (e: Exception) {
                 Log.e("ApiService", "즐겨찾기 삭제 실패: $e")

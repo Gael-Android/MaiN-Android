@@ -1,6 +1,6 @@
-package com.MaiN.main_android.retrofit
+package com.MaiN.main_android.retrofit.reservation
 
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.HTTP
@@ -10,19 +10,20 @@ import retrofit2.http.Query
 
 interface ReservAPIService {
     @GET("calendar/show_event")
-    fun showEvents(
+    suspend fun showEvents(
         @Query("date") date: String,
         @Query("location") location: String
-    ): Call<ReservDataclass>
+    ): Response<ReservDataclass>
 
     @POST("calendar/add")
-    fun addEvent(
+    suspend fun addEvent(
         @Body reservationRequest: ReservationRequest
-    ): Call<Void>
+    ): Response<Unit>
 
     @HTTP(method = "DELETE", path = "/calendar/delete/{eventid}")
-    fun deleteEvent(
+    suspend fun deleteEvent(
         @Path("eventid") eventId: String,
-    ): Call<Unit>
+        @Path("student_id") studentId: String,
+    ): Response<Unit>
 }
 

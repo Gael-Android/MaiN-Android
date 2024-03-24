@@ -148,7 +148,7 @@ class SsucatchAdapter(
                 if (response.isSuccessful) {
                     Log.d("ApiService", "즐겨찾기 삭제 성공")
                 } else {
-                    Log.d("ApiService", "즐겨찾기 삭제 실패 ${response.errorBody()}")
+                    Log.d("ApiService", "즐겨찾기 삭제 실패 ${response.errorBody()?.string()}")
                 }
             } catch (e: Exception) {
                 Log.d("ApiService", "즐겨찾기 삭제 실패 : $e")

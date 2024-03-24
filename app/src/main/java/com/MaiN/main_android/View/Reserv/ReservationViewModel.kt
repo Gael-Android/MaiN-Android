@@ -3,22 +3,24 @@ package com.MaiN.main_android.View.Reserv
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.MaiN.main_android.SharedPreference.MyApplication
 import com.MaiN.main_android.View.Reserv.data.BottomSheetData
 import com.MaiN.main_android.View.Reserv.state.ReservationScreenUiState
 import com.MaiN.main_android.View.Reserv.state.fillTwoZero
-import com.MaiN.main_android.retrofit.ReservAPIService
-import com.MaiN.main_android.retrofit.ReservDataclass
-import com.MaiN.main_android.retrofit.ReservationRequest
+import com.MaiN.main_android.retrofit.ApiResponse
 import com.MaiN.main_android.retrofit.RetrofitConnection
-import com.MaiN.main_android.retrofit.toCellUiStateList
+import com.MaiN.main_android.retrofit.reservation.ReservAPIService
+import com.MaiN.main_android.retrofit.reservation.ReservationRequest
+import com.MaiN.main_android.retrofit.reservation.toCellUiStateList
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.json.JSONObject
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.YearMonth
@@ -105,11 +107,13 @@ class ReservationViewModel : ViewModel() {
 
     }
 
+    // 해당 월의 일 수를 반환하는 함수
     private fun getDaysInMonth(year: Int, month: Int): Int {
         val yearMonth = YearMonth.of(year, month)
         return yearMonth.lengthOfMonth()
     }
 
+    // 년과 월을 입력하면, 해당 월의 일자와 요일을 반환하는 함수
     private fun getMonthDetails(year: Int, month: Int): MutableList<Pair<String, Int>> {
         val monthDetails = mutableListOf<Pair<String, Int>>()
         val yearMonth = YearMonth.of(year, month)
@@ -150,62 +154,57 @@ class ReservationViewModel : ViewModel() {
 
     private fun showEvents(date: String, location: String) {
         Log.d("KWK", "showEvents $date $location")
-        viewModelScope.launch {
-            retrofitAPI.showEvents(date, location).enqueue(
-                object : Callback<ReservDataclass> {
-                    override fun onResponse(
-                        call: Call<ReservDataclass>,
-                        response: Response<ReservDataclass>
-                    ) {
-                        val cellUiStateList = response.body()?.toCellUiStateList()
-                        Log.d("KWK-showEvent-UCCESS", cellUiStateList.toString())
-                        when (location) {
-                            "세미나실1" -> {
-                                _stateFlow.update {
-                                    it.copy(
-                                        seminarRoom1 = cellUiStateList ?: emptyList()
-                                    )
-                                }
-                                Log.d("KWK", _stateFlow.value.seminarRoom1.toString())
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = retrofitAPI.showEvents(date, location)
+                if (response.isSuccessful) {
+                    val cellUiStateList = response.body()?.toCellUiStateList()
+                    Log.d("KWK-showEvent-SUCCESS", cellUiStateList.toString())
+                    when (location) {
+                        "세미나실1" -> {
+                            _stateFlow.update {
+                                it.copy(
+                                    seminarRoom1 = cellUiStateList ?: emptyList()
+                                )
                             }
+                            Log.d("KWK", _stateFlow.value.seminarRoom1.toString())
+                        }
 
-                            "세미나실2" -> {
-                                _stateFlow.update {
-                                    it.copy(
-                                        seminarRoom2 = cellUiStateList ?: emptyList()
-                                    )
-                                }
-                                Log.d("KWK", _stateFlow.value.seminarRoom2.toString())
+                        "세미나실2" -> {
+                            _stateFlow.update {
+                                it.copy(
+                                    seminarRoom2 = cellUiStateList ?: emptyList()
+                                )
                             }
+                            Log.d("KWK", _stateFlow.value.seminarRoom2.toString())
+                        }
 
-                            "교수회의실" -> {
-                                _stateFlow.update {
-                                    it.copy(
-                                        facultyConferenceRoom = cellUiStateList ?: emptyList()
-                                    )
-                                }
-                                Log.d("KWK", _stateFlow.value.facultyConferenceRoom.toString())
+                        "교수회의실" -> {
+                            _stateFlow.update {
+                                it.copy(
+                                    facultyConferenceRoom = cellUiStateList ?: emptyList()
+                                )
                             }
+                            Log.d("KWK", _stateFlow.value.facultyConferenceRoom.toString())
+                        }
 
-                            else -> {
+                        else -> {
 
-                            }
                         }
                     }
-
-                    override fun onFailure(call: Call<ReservDataclass>, t: Throwable) {
-                        Log.d("KWK-showEvent-FAIL", t.message.toString())
-                        _stateFlow.update {
-                            it.copy(
-                                seminarRoom1 = emptyList(),
-                                seminarRoom2 = emptyList(),
-                                facultyConferenceRoom = emptyList(),
-                            )
-                        }
-                    }
-
+                } else {
+                    Log.d("KWK-showEvent-FAIL", "${response.errorBody()?.string()}")
                 }
-            )
+            } catch (e: Exception) {
+                Log.d("KWK-showEvent-EXCEPTION", e.message.toString())
+                _stateFlow.update {
+                    it.copy(
+                        seminarRoom1 = emptyList(),
+                        seminarRoom2 = emptyList(),
+                        facultyConferenceRoom = emptyList(),
+                    )
+                }
+            }
         }
     }
 
@@ -217,39 +216,45 @@ class ReservationViewModel : ViewModel() {
         }
     }
 
-    fun addEvent(reservationRequest: ReservationRequest) {
-        viewModelScope.launch {
-            Log.d("KWK-addEvent", reservationRequest.toString())
-            retrofitAPI.addEvent(reservationRequest).enqueue(
-                object : Callback<Void> {
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        Log.d("KWK-addEvent-SUCCESS", response.body().toString())
-                        refresh()
-                    }
-
-                    override fun onFailure(call: Call<Void>, t: Throwable) {
-                        Log.d("KWK-addEvent-FAIL", t.message.toString())
-                    }
-
-                }
-            )
+    fun addEvent(reservationRequest: ReservationRequest) = flow {
+        runCatching {
+            retrofitAPI.addEvent(reservationRequest)
+        }.onSuccess {
+            if (it.isSuccessful) {
+                Log.d("KWK-addEvent-SUCCESS", it.body().toString())
+                refresh()
+                emit(ApiResponse.Success)
+            } else {
+                Log.d("KWK-addEvent-FAIL", "${it.errorBody()?.string()}")
+                emit(
+                    ApiResponse.Failure(
+                        JSONObject(
+                            it.errorBody()?.string()!!
+                        ).getString("message")
+                    )
+                )
+            }
+        }.onFailure {
+            Log.d("KWK-addEvent-Exception", it.message.toString())
+            emit(ApiResponse.Error(it.message.toString()))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 
     fun deleteEvent(eventId: String) {
-        viewModelScope.launch {
-            retrofitAPI.deleteEvent(eventId).enqueue(
-                object : Callback<Unit> {
-                    override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                        Log.d("KWK-deleteEvent-SUCCESS", response.body().toString())
-                        refresh()
-                    }
-
-                    override fun onFailure(call: Call<Unit>, t: Throwable) {
-                        Log.d("KWK-deleteEvent-FAIL", t.message.toString())
-                    }
+        Log.d("KWK-deleteEvent", eventId)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val schoolId = MyApplication.prefs.getSchoolNumber("schoolNumber", "")
+                val response = retrofitAPI.deleteEvent(eventId, schoolId)
+                if (response.isSuccessful) {
+                    Log.d("KWK-deleteEvent-SUCCESS", response.body().toString())
+                    refresh()
+                } else {
+                    Log.d("KWK-deleteEvent-FAIL", response.errorBody()?.string()!!)
                 }
-            )
+            } catch (e: Exception) {
+                Log.d("KWK-deleteEvent-Exception", e.message.toString())
+            }
         }
     }
 }

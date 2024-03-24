@@ -1,6 +1,6 @@
 package com.MaiN.main_android.View.Reserv.data
 
-import com.MaiN.main_android.retrofit.ReservationRequest
+import com.MaiN.main_android.retrofit.reservation.ReservationRequest
 
 data class ReservationBottomSheetData(
     val location: String,
