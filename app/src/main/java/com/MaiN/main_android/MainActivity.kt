@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.MaiN.main_android.SharedPreference.PreferenceUtil
 import com.MaiN.main_android.view.AgreeViewActivity
 import com.MaiN.main_android.view.HomeActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

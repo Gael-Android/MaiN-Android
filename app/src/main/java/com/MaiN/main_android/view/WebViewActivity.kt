@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.MaiN.main_android.SharedPreference.MyApplication
 import com.MaiN.main_android.retrofit.RetrofitConnection
-import com.MaiN.main_android.retrofit.UserAPIService
+import com.MaiN.main_android.retrofit.user.UserAPIService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

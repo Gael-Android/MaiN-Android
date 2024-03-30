@@ -1,4 +1,4 @@
-package com.MaiN.main_android.retrofit
+package com.MaiN.main_android.retrofit.suu_catch_notice
 
 import retrofit2.Response
 import retrofit2.http.DELETE

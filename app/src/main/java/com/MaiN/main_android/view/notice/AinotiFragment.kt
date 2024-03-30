@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.Adapter.AiNotiAdapter
 import com.MaiN.main_android.R
 import com.MaiN.main_android.SharedPreference.MyApplication
-import com.MaiN.main_android.retrofit.AiNotiAPIService
 import com.MaiN.main_android.retrofit.RetrofitConnection
+import com.MaiN.main_android.retrofit.ai_department_notice.AiNotiAPIService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

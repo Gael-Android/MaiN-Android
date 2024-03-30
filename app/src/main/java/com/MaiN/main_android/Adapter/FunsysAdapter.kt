@@ -13,9 +13,9 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.R
 import com.MaiN.main_android.SharedPreference.MyApplication
-import com.MaiN.main_android.retrofit.FunsysAPIService
-import com.MaiN.main_android.retrofit.FunsysDataclass
 import com.MaiN.main_android.retrofit.RetrofitConnection
+import com.MaiN.main_android.retrofit.fun_system_notice.FunsysAPIService
+import com.MaiN.main_android.retrofit.fun_system_notice.FunsysDataclass
 import com.MaiN.main_android.view.notice.Funsys_WebView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

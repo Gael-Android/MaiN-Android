@@ -1,4 +1,4 @@
-package com.MaiN.main_android.retrofit
+package com.MaiN.main_android.retrofit.fun_system_notice
 
 import com.google.gson.annotations.SerializedName
 
