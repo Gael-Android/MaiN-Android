@@ -27,7 +27,8 @@ fun MainRoute(
 fun rememberMainActions(coordinator: MainCoordinator): MainActions {
     return remember(coordinator) {
         MainActions(
-            onLoginClick = coordinator::onLoginClick
+            onCreate = coordinator::onCreate,
+            onLoginClick = coordinator::onLoginClick,
         )
     }
 }

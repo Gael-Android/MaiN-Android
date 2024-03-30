@@ -11,5 +11,6 @@ class MainState
  * passed to the coordinator to handle
  **/
 data class MainActions(
+    val onCreate: () -> Unit = {},
     val onLoginClick: () -> Unit = {}
 )

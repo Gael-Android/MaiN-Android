@@ -7,7 +7,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.MaiN.main_android.MaiNApplication
+import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.user.UserAPIService
 import kotlinx.coroutines.Dispatchers
@@ -43,14 +43,17 @@ class WebViewActivity : AppCompatActivity() {
                             view.evaluateJavascript(jsSchoolNumber) { schoolNumber ->
                                 //학번을 shared preferences 에 저장
                                 val schoolNumberWithoutQuotes = schoolNumber.replace("\"", "")
-                                MaiNApplication.prefs.setSchoolNumber(
+                                SharedPreferencesManager.setSchoolNumber(
                                     "schoolNumber",
                                     schoolNumberWithoutQuotes
                                 )
                                 lifecycleScope.launch(Dispatchers.IO) {
                                     addUser(schoolNumberWithoutQuotes)
                                 }
-                                MaiNApplication.prefs.setIsLogin("isLogin", true) //로그인 상태 true 로 저장
+                                SharedPreferencesManager.setIsLogin(
+                                    "isLogin",
+                                    true
+                                ) //로그인 상태 true 로 저장
                             }
                             navigateToHome()
                             Log.d("navigateToHome", "홈화면으로 이동 메소드 호출")

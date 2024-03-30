@@ -3,7 +3,7 @@ package com.MaiN.main_android.view.room_reservation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.MaiN.main_android.MaiNApplication
+import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.ApiResponse
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.reservation.ReservAPIService
@@ -244,7 +244,7 @@ class ReservationViewModel : ViewModel() {
         Log.d("KWK-deleteEvent", eventId)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val schoolId = MaiNApplication.prefs.getSchoolNumber("schoolNumber", "")
+                val schoolId = SharedPreferencesManager.getSchoolNumber("schoolNumber", "")
                 val response = retrofitAPI.deleteEvent(eventId, schoolId)
                 if (response.isSuccessful) {
                     Log.d("KWK-deleteEvent-SUCCESS", response.body().toString())

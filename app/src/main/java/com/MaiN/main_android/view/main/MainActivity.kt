@@ -12,7 +12,6 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.MaiN.main_android.R
 import com.MaiN.main_android.view.AgreeViewActivity
-import com.MaiN.main_android.view.HomeActivity
 import com.MaiN.main_android.view.navhost.MaiNNavHost
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,14 +22,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val prefs = PreferenceUtil(this)
-        val isLogin = prefs.getIsLogin("isLogin", false)
-
-        if (isLogin) {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val prefs = SharedPreferencesManager(this)
+//        val isLogin = prefs.getIsLogin("isLogin", false)
+//
+//        if (isLogin) {
+//            val intent = Intent(this, HomeActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         //MaiN
         styleTextView()
