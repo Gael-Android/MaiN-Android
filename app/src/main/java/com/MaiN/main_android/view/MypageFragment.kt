@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.MaiN.main_android.MainActivity
 import com.MaiN.main_android.R
 import com.MaiN.main_android.SharedPreference.MyApplication
 import com.MaiN.main_android.SharedPreference.PreferenceUtil
+import com.MaiN.main_android.view.main.MainActivity
 
 
 class MypageFragment : Fragment() {

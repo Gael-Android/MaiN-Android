@@ -1,4 +1,4 @@
-package com.MaiN.main_android
+package com.MaiN.main_android.view.main
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,7 +8,9 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import com.MaiN.main_android.R
 import com.MaiN.main_android.SharedPreference.PreferenceUtil
 import com.MaiN.main_android.view.AgreeViewActivity
 import com.MaiN.main_android.view.HomeActivity
@@ -35,7 +37,9 @@ class MainActivity : AppCompatActivity() {
         //로그인 버튼
         setLoginButton()
 
+        setContent {
 
+        }
     }
 
     //MaiN 글씨 커스텀
