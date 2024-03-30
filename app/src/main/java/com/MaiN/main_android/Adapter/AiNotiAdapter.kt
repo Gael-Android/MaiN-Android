@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.R
 import com.MaiN.main_android.SharedPreference.MyApplication
-import com.MaiN.main_android.View.Notice.AiNoti_WebView
+import com.MaiN.main_android.view.notice.AiNoti_WebView
 import com.MaiN.main_android.retrofit.AiNotiAPIService
 import com.MaiN.main_android.retrofit.AiNotiDataclass
 import com.MaiN.main_android.retrofit.RetrofitConnection

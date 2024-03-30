@@ -10,8 +10,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.MaiN.main_android.SharedPreference.PreferenceUtil
-import com.MaiN.main_android.View.AgreeViewActivity
-import com.MaiN.main_android.View.HomeActivity
+import com.MaiN.main_android.view.AgreeViewActivity
+import com.MaiN.main_android.view.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:foregroundTint="#03A9F4"
-    tools:context=".View.Notice.AinotiFragment">
+    tools:context=".view.notice.AinotiFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

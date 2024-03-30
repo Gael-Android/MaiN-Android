@@ -1,6 +1,6 @@
 package com.MaiN.main_android.retrofit.reservation
 
-import com.MaiN.main_android.View.Reserv.state.CellUiState
+import com.MaiN.main_android.view.room_reservation.state.CellUiState
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime
 import java.time.ZoneId

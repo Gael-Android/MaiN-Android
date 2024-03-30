@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.R
 import com.MaiN.main_android.SharedPreference.MyApplication
-import com.MaiN.main_android.View.Notice.Ssucatch_WebView
+import com.MaiN.main_android.view.notice.Ssucatch_WebView
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.SsucatchAPIService
 import com.MaiN.main_android.retrofit.SsucatchDataclass

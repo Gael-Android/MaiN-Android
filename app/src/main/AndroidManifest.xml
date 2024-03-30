@@ -26,14 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.AgreeViewActivity"></activity>
-        <activity android:name=".View.WebViewActivity"></activity>
+        <activity android:name=".view.AgreeViewActivity"></activity>
+        <activity android:name=".view.WebViewActivity"></activity>
         <activity
-            android:name=".View.HomeActivity"
+            android:name=".view.HomeActivity"
             android:launchMode="singleTop"></activity>
-        <activity android:name=".View.Notice.AiNoti_WebView"></activity>
-        <activity android:name=".View.Notice.Funsys_WebView"></activity>
-        <activity android:name=".View.Notice.Ssucatch_WebView"></activity>
+        <activity android:name=".view.notice.AiNoti_WebView"></activity>
+        <activity android:name=".view.notice.Funsys_WebView"></activity>
+        <activity android:name=".view.notice.Ssucatch_WebView"></activity>
 
     </application>
 
