@@ -33,5 +33,11 @@ fun MaiNNavHost(
         composable(NavRoute.MainRoute.route) {
             MainRoute(navController = navController)
         }
+        composable(NavRoute.HomeRoute.route) {
+
+        }
+        composable(NavRoute.AgreeRoute.route) {
+
+        }
     }
 }
