@@ -40,6 +40,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.MaiN.main_android.retrofit.ApiResponse
 import com.MaiN.main_android.view.room_reservation.component.CellColumn
 import com.MaiN.main_android.view.room_reservation.component.DateItem
 import com.MaiN.main_android.view.room_reservation.component.DatePickerDialog
@@ -48,7 +49,6 @@ import com.MaiN.main_android.view.room_reservation.component.ReservationBottomSh
 import com.MaiN.main_android.view.room_reservation.component.Timeline
 import com.MaiN.main_android.view.room_reservation.data.toReservationRequest
 import com.MaiN.main_android.view.room_reservation.state.fillTwoZero
-import com.MaiN.main_android.retrofit.ApiResponse
 import kotlinx.coroutines.launch
 
 @Composable

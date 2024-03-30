@@ -59,7 +59,7 @@ class FunsysFragment : Fragment() {
         }
 
         progressBar = view.findViewById(R.id.progressBar2)
-        progressBar.isIndeterminate = true;
+        progressBar.isIndeterminate = true
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             progressBar.indeterminateDrawable.colorFilter =
                 BlendModeColorFilter(Color.parseColor("#03A9F4"), BlendMode.SRC_ATOP)

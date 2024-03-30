@@ -11,10 +11,10 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.R
 import com.MaiN.main_android.SharedPreference.MyApplication
-import com.MaiN.main_android.view.notice.Ssucatch_WebView
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.SsucatchAPIService
 import com.MaiN.main_android.retrofit.SsucatchDataclass
+import com.MaiN.main_android.view.notice.Ssucatch_WebView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
