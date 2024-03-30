@@ -11,9 +11,9 @@ import android.widget.TextView
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.PreferenceUtil
 import com.MaiN.main_android.view.AgreeViewActivity
 import com.MaiN.main_android.view.HomeActivity
+import com.MaiN.main_android.view.navhost.MaiNNavHost
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         setLoginButton()
 
         setContent {
-
+            MaiNNavHost()
         }
     }
 

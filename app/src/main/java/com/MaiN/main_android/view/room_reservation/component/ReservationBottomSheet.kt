@@ -32,7 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.MaiN.main_android.SharedPreference.MyApplication
+import com.MaiN.main_android.MaiNApplication
 import com.MaiN.main_android.view.room_reservation.data.ReservationBottomSheetData
 import com.MaiN.main_android.view.room_reservation.state.fillTwoZero
 
@@ -44,7 +44,7 @@ fun ReservationBottomSheet(
     onReservation: (ReservationBottomSheetData) -> Unit = {}
 ) {
     val sheetState = rememberModalBottomSheetState()
-    val schoolId = MyApplication.prefs.getSchoolNumber("schoolNumber", "???")
+    val schoolId = MaiNApplication.prefs.getSchoolNumber("schoolNumber", "???")
 
     val toggleStates = listOf(
         "세미나실1",

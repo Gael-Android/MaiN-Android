@@ -17,4 +17,5 @@ class MainViewModel @Inject constructor(
 
     val stateFlow: StateFlow<MainState> = _stateFlow.asStateFlow()
 
+
 }

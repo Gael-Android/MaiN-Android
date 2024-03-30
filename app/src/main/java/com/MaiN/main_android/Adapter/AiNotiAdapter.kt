@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.MyApplication
+import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.ai_department_notice.AiNotiAPIService
 import com.MaiN.main_android.retrofit.ai_department_notice.AiNotiDataclass
@@ -91,13 +91,13 @@ class AiNotiAdapter(
                 //favorite 이 true 일 때
                 if (item.favorites) {
                     favorite.setImageResource(R.drawable.selected_star)
-                    val studentId = MyApplication.prefs.getSchoolNumber("schoolNumber", "")
+                    val studentId = SharedPreferencesManager.getSchoolNumber("schoolNumber", "")
                     lifecycleScope.launch(Dispatchers.IO) {
                         addFavorite(studentId, item.id)
                     }
                 } else {
                     favorite.setImageResource(R.drawable.unselected_star)
-                    val studentId = MyApplication.prefs.getSchoolNumber("schoolNumber", "")
+                    val studentId = SharedPreferencesManager.getSchoolNumber("schoolNumber", "")
                     lifecycleScope.launch(Dispatchers.IO) {
                         deleteFavorite(studentId, item.id)
                     }

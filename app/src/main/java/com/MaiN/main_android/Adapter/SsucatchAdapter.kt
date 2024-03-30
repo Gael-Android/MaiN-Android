@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.MyApplication
+import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.suu_catch_notice.SsucatchAPIService
 import com.MaiN.main_android.retrofit.suu_catch_notice.SsucatchDataclass
@@ -104,7 +104,7 @@ class SsucatchAdapter(
             favorite.setOnClickListener {
                 item.favorites = !item.favorites
                 favorite.isSelected = item.favorites
-                val studentId = MyApplication.prefs.getSchoolNumber("schoolNumber", "")
+                val studentId = SharedPreferencesManager.getSchoolNumber("schoolNumber", "")
                 //favorite 이 true 일 때
                 if (item.favorites) {
                     favorite.setImageResource(R.drawable.selected_star)

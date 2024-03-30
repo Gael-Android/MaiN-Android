@@ -10,8 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.MyApplication
-import com.MaiN.main_android.SharedPreference.PreferenceUtil
+import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
 import com.MaiN.main_android.view.main.MainActivity
 
 
@@ -31,8 +30,7 @@ class MypageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val prefs = PreferenceUtil(requireContext())
-        val schoolNumber = prefs.getSchoolNumber("schoolNumber", "None")
+        val schoolNumber = SharedPreferencesManager.getSchoolNumber("schoolNumber", "None")
         schoolNumberTextView.text = schoolNumber
         setLogoutButton()
     }
@@ -42,8 +40,8 @@ class MypageFragment : Fragment() {
         val logoutButton: Button? = view?.findViewById(R.id.logout_button)
         logoutButton?.setOnClickListener {
             //저장된 학번 정보 삭제
-            MyApplication.prefs.delSchoolNumber()
-            MyApplication.prefs.setIsLogin("isLogin", false)
+            SharedPreferencesManager.delSchoolNumber()
+            SharedPreferencesManager.setIsLogin("isLogin", false)
 
             //모든 액티비티 스택 클리어 후 첫 화면으로 돌아감
             val intent = Intent(activity, MainActivity::class.java)

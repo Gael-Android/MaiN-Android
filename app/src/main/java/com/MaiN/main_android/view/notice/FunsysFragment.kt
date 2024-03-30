@@ -18,8 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.Adapter.FunsysAdapter
+import com.MaiN.main_android.MaiNApplication
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.MyApplication
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.fun_system_notice.FunsysAPIService
 import kotlinx.coroutines.Dispatchers
@@ -83,7 +83,7 @@ class FunsysFragment : Fragment() {
 
     private suspend fun fetchNotifications() {
         progressBar.visibility = View.VISIBLE
-        val studentID = MyApplication.prefs.getSchoolNumber("schoolNumber", "")
+        val studentID = MaiNApplication.prefs.getSchoolNumber("schoolNumber", "")
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {

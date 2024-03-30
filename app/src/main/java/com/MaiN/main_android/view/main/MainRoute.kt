@@ -4,11 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.navigation.NavHostController
 
 @Composable
 fun MainRoute(
-    coordinator: MainCoordinator = rememberMainCoordinator()
+    navController: NavHostController,
 ) {
+    val coordinator: MainCoordinator = rememberMainCoordinator(navController = navController)
+
     // State observing and declarations
     val uiState by coordinator.screenStateFlow.collectAsState(MainState())
 
@@ -22,11 +25,9 @@ fun MainRoute(
 
 @Composable
 fun rememberMainActions(coordinator: MainCoordinator): MainActions {
-
-
     return remember(coordinator) {
         MainActions(
-            onLoginClick = coordinator::doStuff
+            onLoginClick = coordinator::onLoginClick
         )
     }
 }

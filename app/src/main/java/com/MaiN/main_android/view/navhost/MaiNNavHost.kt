@@ -1,22 +1,37 @@
 package com.MaiN.main_android.view.navhost
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.MaiN.main_android.view.main.MainRoute
 
-@Composable
-fun MaiNNavHost(
-    modifier: Modifier = Modifier
-) {
-    Box(modifier) {
-        Text(text = "MaiNNavHost")
+sealed class NavRoute(val route: String) {
+    data object MainRoute : NavRoute("MainRoute")
+    data object HomeRoute : NavRoute("HomeRoute")
+    data object AgreeRoute : NavRoute("AgreeRoute")
+
+    fun withArgs(vararg args: String): String {
+        return buildString {
+            append(route)
+            args.forEach { arg ->
+                append("/$arg")
+            }
+        }
     }
 }
 
-@Preview(name = "MaiNNavHost")
 @Composable
-private fun PreviewMaiNNavHost() {
-    MaiNNavHost()
+fun MaiNNavHost(
+    navController: NavHostController = rememberNavController(),
+) {
+    NavHost(
+        navController = navController,
+        startDestination = NavRoute.MainRoute.route,
+    ) {
+        composable(NavRoute.MainRoute.route) {
+            MainRoute(navController = navController)
+        }
+    }
 }

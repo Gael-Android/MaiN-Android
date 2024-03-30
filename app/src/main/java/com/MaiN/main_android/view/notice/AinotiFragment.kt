@@ -18,8 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.Adapter.AiNotiAdapter
+import com.MaiN.main_android.MaiNApplication
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.MyApplication
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.ai_department_notice.AiNotiAPIService
 import kotlinx.coroutines.Dispatchers
@@ -85,7 +85,7 @@ class AinotiFragment : Fragment() {
     // reformat this function to use coroutines
     private fun fetchNotifications() {
         progressBar.visibility = View.VISIBLE
-        val studentID = MyApplication.prefs.getSchoolNumber("schoolNumber", "")
+        val studentID = MaiNApplication.prefs.getSchoolNumber("schoolNumber", "")
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
