@@ -1,5 +1,6 @@
 package com.MaiN.main_android.view.navhost
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -34,10 +35,10 @@ fun MaiNNavHost(
             MainRoute(navController = navController)
         }
         composable(NavRoute.HomeRoute.route) {
-
+            Text(text = "Home")
         }
         composable(NavRoute.AgreeRoute.route) {
-
+            Text(text = "Agree")
         }
     }
 }

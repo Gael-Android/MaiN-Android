@@ -2,7 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Cell1">
+      <entry key="MainScreenPreview">
         <State />
       </entry>
       <entry key="PreviewCellColumn">
@@ -11,10 +11,10 @@
       <entry key="PreviewDetailBottomSheet">
         <State />
       </entry>
-      <entry key="PreviewTimeline">
+      <entry key="ReservationScreenPreview">
         <State />
       </entry>
-      <entry key="ReservationScreenPreview">
+      <entry key="TermsAgreementScreenPreview">
         <State />
       </entry>
       <entry key="app">
