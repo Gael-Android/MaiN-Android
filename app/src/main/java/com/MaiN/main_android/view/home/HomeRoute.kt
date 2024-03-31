@@ -27,7 +27,8 @@ fun HomeRoute(
 fun rememberHomeActions(coordinator: HomeCoordinator): HomeActions {
     return remember(coordinator) {
         HomeActions(
-            onClick = coordinator::doStuff
+            isSelected = coordinator::isSelected,
+            navigateTo = coordinator::navigateTo
         )
     }
 }
