@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.Adapter.FunsysAdapter
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
+import com.MaiN.main_android.shared_preference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.fun_system_notice.FunsysAPIService
 import kotlinx.coroutines.Dispatchers

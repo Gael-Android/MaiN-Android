@@ -1,4 +1,4 @@
-package com.MaiN.main_android.SharedPreference
+package com.MaiN.main_android.shared_preference
 
 import android.content.Context
 import android.content.SharedPreferences

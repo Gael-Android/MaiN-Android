@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
+import com.MaiN.main_android.shared_preference.SharedPreferencesManager
 import com.MaiN.main_android.view.main.MainActivity
 
 

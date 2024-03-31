@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
+import com.MaiN.main_android.shared_preference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.suu_catch_notice.SsucatchAPIService
 import com.MaiN.main_android.retrofit.suu_catch_notice.SsucatchDataclass

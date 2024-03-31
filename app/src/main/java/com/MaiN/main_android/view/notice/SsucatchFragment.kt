@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MaiN.main_android.Adapter.SsucatchAdapter
 import com.MaiN.main_android.R
-import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
+import com.MaiN.main_android.shared_preference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.suu_catch_notice.SsucatchAPIService
 import kotlinx.coroutines.Dispatchers

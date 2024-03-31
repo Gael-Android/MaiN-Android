@@ -3,7 +3,7 @@ package com.MaiN.main_android.view.room_reservation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.MaiN.main_android.SharedPreference.SharedPreferencesManager
+import com.MaiN.main_android.shared_preference.SharedPreferencesManager
 import com.MaiN.main_android.retrofit.ApiResponse
 import com.MaiN.main_android.retrofit.RetrofitConnection
 import com.MaiN.main_android.retrofit.reservation.ReservAPIService
