@@ -7,11 +7,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.MaiN.main_android.view.main.MainRoute
+import com.MaiN.main_android.view.saint_login.SaintLoginRoute
+import com.MaiN.main_android.view.terms_agreement.TermsAgreementRoute
 
 sealed class NavRoute(val route: String) {
     data object MainRoute : NavRoute("MainRoute")
     data object HomeRoute : NavRoute("HomeRoute")
-    data object AgreeRoute : NavRoute("AgreeRoute")
+
+    data object TermsAgreementRoute : NavRoute("TermsAgreementRoute")
+
+    data object SaintLoginRoute : NavRoute("SaintLoginRoute")
+
 
     fun withArgs(vararg args: String): String {
         return buildString {
@@ -37,8 +43,11 @@ fun MaiNNavHost(
         composable(NavRoute.HomeRoute.route) {
             Text(text = "Home")
         }
-        composable(NavRoute.AgreeRoute.route) {
-            Text(text = "Agree")
+        composable(NavRoute.TermsAgreementRoute.route) {
+            TermsAgreementRoute(navController = navController)
+        }
+        composable(NavRoute.SaintLoginRoute.route) {
+            SaintLoginRoute(navController = navController)
         }
     }
 }

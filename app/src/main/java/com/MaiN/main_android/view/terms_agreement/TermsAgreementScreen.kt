@@ -65,7 +65,7 @@ fun TermsAgreementScreen(
                 disabledContainerColor = Color.Black,
                 disabledContentColor = Color.White,
             ),
-            onClick = { /*TODO*/ }
+            onClick = { actions.onAgreeClick() }
         ) {
             Text(
                 text = "동의하기",

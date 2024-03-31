@@ -11,5 +11,5 @@ class TermsAgreementState
  * passed to the coordinator to handle
  **/
 data class TermsAgreementActions(
-    val onClick: () -> Unit = {}
+    val onAgreeClick: () -> Unit = {}
 )

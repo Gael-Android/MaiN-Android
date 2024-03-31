@@ -4,11 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.navigation.NavHostController
 
 @Composable
 fun TermsAgreementRoute(
-    coordinator: TermsAgreementCoordinator = rememberTermsAgreementCoordinator()
+    navController: NavHostController,
 ) {
+    val coordinator: TermsAgreementCoordinator =
+        rememberTermsAgreementCoordinator(navController = navController)
+
     // State observing and declarations
     val uiState by coordinator.screenStateFlow.collectAsState(TermsAgreementState())
 
@@ -24,7 +28,7 @@ fun TermsAgreementRoute(
 fun rememberTermsAgreementActions(coordinator: TermsAgreementCoordinator): TermsAgreementActions {
     return remember(coordinator) {
         TermsAgreementActions(
-            onClick = coordinator::doStuff
+            onAgreeClick = coordinator::onAgreeClick
         )
     }
 }
